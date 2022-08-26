@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type State = {
   count: number;
+  pokemon: any;
+  students: string[];
 };
 
 // type Item = {
@@ -15,7 +17,9 @@ type State = {
 // };
 
 const initialState: State = {
-  count: 0
+  count: 0,
+  pokemon: null,
+  students: ["Yacco", "Tim", "Bert", "Tjeerd", "Niels"]
 };
 
 export const counterSlice = createSlice({
@@ -33,10 +37,14 @@ export const counterSlice = createSlice({
     },
     change: (state, action: PayloadAction<number>) => {
       state.count += action.payload;
+    },
+    setPokemon: (state, action: PayloadAction<any>) => {
+      state.pokemon = action.payload;
     }
   }
 });
 
-export const { increase, decrease, reset, change } = counterSlice.actions;
+export const { increase, decrease, reset, change, setPokemon } =
+  counterSlice.actions;
 
 export default counterSlice.reducer;
